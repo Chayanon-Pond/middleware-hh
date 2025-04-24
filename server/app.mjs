@@ -1,11 +1,12 @@
 import express from "express";
+import { validateCreateassignments } from "./middleware/assignments.Validation.mjs";
 
 const app = express();
 const port = 4001;
 
 app.use(express.json());
 
-app.get("/test", (req, res) => {
+app.get("/test", (req, [validateCreateassignments] , res) => {
   return res.json("Server API is working 🚀");
 });
 
@@ -18,3 +19,5 @@ app.post("/assignments", (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running at ${port}`);
 });
+
+
